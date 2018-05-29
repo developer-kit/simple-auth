@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package proto;
+
+service Auth {
+	rpc DoAuth (AuthRequest) returns (AuthResponse){}
+}
+
+message AuthRequest {
+	string client_id = 1;
+	string client_secret = 2;
+}
+
+message AuthResponse {
+	enum AuthResultCode {
+		SUCCESS = 0;
+		FAIL	= 1;
+	}
+	AuthResultCode result = 1;
+	string token = 2;
+}

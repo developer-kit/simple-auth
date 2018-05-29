@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package proto;
+
+service Verification {
+	rpc DoVerification (VerificationRequest) returns (VerificationResponse){}
+}
+
+message VerificationRequest {
+	string token = 1;
+}
+
+message VerificationResponse {
+	enum VerificationResultCode {
+		SUCCESS = 0;
+		FAIL = 1;
+	}
+	VerificationResultCode result = 1;
+	string client_id = 2;
+}
